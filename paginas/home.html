@@ -25,11 +25,14 @@
             font-weight: bold;
         }
         .calendar-container {
-            margin-top: 100px;
+            margin-top: 76px;
             margin-left: 70px;
             width: auto;
             height: auto;
-            
+            border-style: solid;
+            border-radius: 20px;
+            border: 1px solid #ddd;
+            padding: 20px;            
         }
         .calendar-header {
             display: flex;
@@ -42,12 +45,7 @@
         grid-template-columns: 1fr 1fr;
         gap: 40px;
     }
-    .tramitesPrincipales {
-        display: flex;
-        flex-direction: column;
-        align-items: flex-end;
-        text-align: right;
-    }
+
     .custom-card {
         width: 200px;
         height: 200px;
@@ -56,6 +54,7 @@
         overflow: hidden;
     }
     .custom-card img {
+        padding-top: 20px;
         display: block;
         margin: 0 auto;
         width: 80px; /* Ajusta el tamaño según sea necesario */
@@ -67,12 +66,21 @@
         text-decoration: none;
         color: inherit;
     }
+    #prevMonth, #nextMonth {
+      background-color: #29a16c; /* Verde */
+      color: #ffffff; /* Blanco */
+      border: none; /* Sin borde */
+      padding: 10px 20px;
+      border-radius: 5px;
+      font-size: 16px;
+      cursor: pointer;
+    }
 
-        .img{
-            display: flex;
-            justify-content: center;
-            ;
-        }
+    #prevMonth:hover,
+    #nextMonth:hover {
+      background-color: #218838; /* Verde más oscuro al pasar el cursor */
+    }
+
     </style>
 </head>
 <body>
@@ -100,7 +108,7 @@
     </header>
 
     <div class="contenedorPadre col">
-        <div class="calendar-container">
+        <div class="calendar-container shadow">
             <div class="calendar-header">
                 <button id="prevMonth" class="btn btn-outline-primary">&lt;</button>
                 <h4 id="monthYear"></h4>
@@ -121,51 +129,50 @@
                 <tbody id="calendarDays"></tbody>
             </table>
         </div>
-        <div class="text-center me-3">
-            <h5 class="text-center mb-1 p-0">Tramites Principales</h5>
+        <div class="text-center">
+            <h5 class="text-center mb-0 p-4">Tramites Principales</h5>
             <div class="container mt-1">
                 <div class="row row-cols-1 row-cols-md-2 g-2">
-                    <div class="col">
+                    <div class="col"> <!-- card 1-->
                         <div class="card custom-card shadow">
-                            <a href="https://www.example.com">
-                                <img src="https://via.placeholder.com/100" alt="Imagen 1">
+                            <a href="#">
+                                <img src="../imagenes/formulario-de-inscripcion.png" alt="Imagen 1">
                                 <div class="card-body">
                                     <h5 class="card-title">Verificacion de materias</h5>
                                 </div>
                             </a>
                         </div>
                     </div>
-                    <div class="col">
+                    <div class="col"> <!-- card 2-->
                         <div class="card custom-card shadow">
-                            <a href="https://www.example.com">
-                                <img src="https://via.placeholder.com/100" alt="Imagen 1">
+                            <a href="#">
+                                <img src="../imagenes/silla.png" alt="Imagen 1">
                                 <div class="card-body">
-                                    <h5 class="card-title">Verificacion de materias</h5>
+                                    <h5 class="card-title">Verificacion Mesa de Exámen</h5>
                                 </div>
                             </a>
                         </div>
                     </div>
-                    <div class="col">
+                    <div class="col"><!-- card 3-->
                         <div class="card custom-card shadow">
-                            <a href="https://www.example.com">
-                                <img src="https://via.placeholder.com/100" alt="Imagen 1">
+                            <a href="#">
+                                <img src="../imagenes/dibujar.png" alt="Imagen 1">
                                 <div class="card-body">
-                                    <h5 class="card-title">Verificacion de materias</h5>
+                                    <h5 class="card-title">Inscripcion a Materias</h5>
                                 </div>
                             </a>
                         </div>
                     </div>
-                    <div class="col">
+                    <div class="col"><!-- card 4-->
                         <div class="card custom-card shadow">
-                            <a href="https://www.example.com">
-                                <img src="https://via.placeholder.com/100" alt="Imagen 1">
+                            <a href="#">
+                                <img src="../imagenes/contrato.png" alt="Imagen 1">
                                 <div class="card-body">
-                                    <h5 class="card-title">Verificacion de materias</h5>
+                                    <h5 class="card-title">Inscripcion a Finales</h5>
                                 </div>
                             </a>
                         </div>
                     </div>
-                    <!-- Replicamos el mismo formato para las demás cards -->
                 </div>
             </div>
         </div>

@@ -11,7 +11,7 @@
     <header class="d-flex align-items-center justify-content-between p-2 border-bottom">
 
         <div class="d-flex align-items-center ms-5">
-            <img src="https://miel.unlam.edu.ar/vista/imagenes/logos/unlam/logo-unlam-34.png" alt="unlam" class="me-3" style="width: 100px;">
+            <img src="../imagenes/UNlaM INTRACONSULTA.png" alt="unlam" class="me-3" style="width: 290px;">
         </div>
         <div class="d-flex align-items-center">
             <div class="text-end me-3">
@@ -20,7 +20,7 @@
                 <span class="text-muted">|</span>
                 <a href="#" class="text-decoration-none ms-2 me-2 text-white">Ayuda</a>
                 <span class="text-muted">|</span>
-                <a href="/paginas/login.html" class="text-decoration-none ms-2 text-white">Cerrar Sesión</a>
+                <a href="../login.html" class="text-decoration-none ms-2 text-white">Cerrar Sesión</a>
             </div>
             <img src="https://i.redd.it/szn7f3ln8jr31.jpg" alt="Perfil" class="rounded-circle" style="width: 50px; height: 50px;">
         </div>
@@ -107,34 +107,36 @@
 </div>
 
     <div class="contenedorPadre col">
-        <div class="calendar-container shadow">
-            <div class="calendar-header">
-                <button id="prevMonth" class="btn btn-outline-primary">&lt;</button>
-                <h4 id="monthYear"></h4>
-                <button id="nextMonth" class="btn btn-outline-primary">&gt;</button>
+        <div>
+            <h5 class="text-left mb-0" style="padding-left: 75px;">Calendario Academico</h5>
+            <div class="calendar-container shadow" style="margin-top: 30px;">
+                <div class="calendar-header">
+                    <button id="prevMonth" class="btn btn-outline-primary">&lt;</button>
+                    <h4 id="monthYear"></h4>
+                    <button id="nextMonth" class="btn btn-outline-primary">&gt;</button>
+                </div>
+                <table class="table calendar-table table-bordered">
+                    <thead>
+                        <tr>
+                            <th>Dom</th>
+                            <th>Lun</th>
+                            <th>Mar</th>
+                            <th>Mié</th>
+                            <th>Jue</th>
+                            <th>Vie</th>
+                            <th>Sáb</th>
+                        </tr>
+                    </thead>
+                    <tbody id="calendarDays"></tbody>
+                </table>
             </div>
-            <table class="table calendar-table table-bordered">
-                <thead>
-                    <tr>
-                        <th>Dom</th>
-                        <th>Lun</th>
-                        <th>Mar</th>
-                        <th>Mié</th>
-                        <th>Jue</th>
-                        <th>Vie</th>
-                        <th>Sáb</th>
-                    </tr>
-                </thead>
-                <tbody id="calendarDays"></tbody>
-            </table>
         </div>
-
-        <div class="div">  <h5 class="text-left mb-0 p-3">Tramites Principales</h5>
+        <div class="div">  <h5 class="text-left mb-0" style="padding-left: 40px; padding-bottom: 25px;">Tramites Principales</h5>
         <div class="text-center">
           
             <div class="container mt-1">
-                <div class="row row-cols-1 row-cols-md-2 g-2">
-                    <div class="col"> <!-- card 1-->
+                <div class="row row-cols-1 row-cols-md-2 g-1">
+                    <div class="col" style="padding-left: 30px;"> <!-- card 1-->
                         <div class="card custom-card shadow">
                             <a href="#">
                                 <img src="../imagenes/formulario-de-inscripcion.png" alt="Imagen 1">
@@ -144,7 +146,7 @@
                             </a>
                         </div>
                     </div>
-                    <div class="col"> <!-- card 2-->
+                    <div class="col" > <!-- card 2-->
                         <div class="card custom-card shadow">
                             <a href="#">
                                 <img src="../imagenes/silla.png" alt="Imagen 1">
@@ -154,7 +156,7 @@
                             </a>
                         </div>
                     </div>
-                    <div class="col"><!-- card 3-->
+                    <div class="col"  style="padding-left: 30px;"><!-- card 3-->
                         <div class="card custom-card shadow">
                             <a href="inscripcion.html">
                                 <img src="../imagenes/dibujar.png" alt="Imagen 1">
@@ -164,7 +166,7 @@
                             </a>
                         </div>
                     </div>
-                    <div class="col"><!-- card 4-->
+                    <div class="col" ><!-- card 4-->
                         <div class="card custom-card shadow">
                             <a href="#">
                                 <img src="../imagenes/contrato.png" alt="Imagen 1">

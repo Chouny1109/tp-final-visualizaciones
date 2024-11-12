@@ -98,7 +98,7 @@ materiasSeleccionadasContainer.addEventListener('click', function(event) {
             `;
         });
 
-       
+
         event.target.classList.toggle("selected");
     }
 });

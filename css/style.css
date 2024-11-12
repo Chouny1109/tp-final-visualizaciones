@@ -1,5 +1,16 @@
-footer, header{
+header{
     background-color: #29a16c;
+}
+
+body{
+    margin: 0;
+    padding: 0;
+}
+
+footer{
+    margin-top: 20px;
+    background-color: #29a16c;
+    height: 20vh;
 }
 
 .calendar-table td {
@@ -110,7 +121,143 @@ background-color: #218838; /* Verde más oscuro al pasar el cursor */
     color: white;
     background-color: #3c914f;
 }
+.table-color{
+    background-color: #3c914f !important;
+}
 
 .horario > .buttonIncri{
     margin-bottom: 10px;
+}
+footer, header{
+    background-color: #29a16c;
+    
+}
+
+.calendar-table td {
+    text-align: center;
+    vertical-align: middle;
+    padding: 10px;
+    height: 5px;
+}
+.calendar-table .header {
+    background-color: #f8f9fa;
+    font-weight: bold;
+}
+.calendar-table .today {
+    background-color: #e9ecef;
+    font-weight: bold;
+}
+.calendar-container {
+    margin-top: 76px;
+    margin-left: 70px;
+    width: auto;
+    height: auto;
+    border-style: solid;
+    border-radius: 20px;
+    border: 1px solid #ddd;
+    padding: 20px;            
+}
+.calendar-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+}
+.contenedorPadre {
+display: grid;
+grid-template-columns: 1fr 1fr;
+gap: 40px;
+}
+
+.custom-card {
+width: 200px;
+height: 200px;
+border: 1px solid #ddd;
+border-radius: 8px;
+overflow: hidden;
+}
+.custom-card img {
+padding-top: 20px;
+display: block;
+margin: 0 auto;
+width: 80px; 
+height: auto;
+}
+.custom-card a {
+display: block;
+height: 100%;
+text-decoration: none;
+color: inherit;
+}
+#prevMonth, #nextMonth {
+background-color: #29a16c; 
+color: #ffffff; 
+border: none; 
+padding: 10px 20px;
+border-radius: 5px;
+font-size: 16px;
+cursor: pointer;
+}
+
+#prevMonth:hover,
+#nextMonth:hover {
+background-color: #218838; 
+}
+.navbar-custom {
+padding: 15px;
+background-color: #e8e7e7;
+}
+
+
+.nav-button {
+color: #ffffff;
+background-color: #3c914f;
+border-radius: 10px;
+padding: 5px 15px;
+margin: 0 5px;
+text-decoration: none;
+border: none;
+}
+
+.nav-button:hover {
+background-color: #4bb262;
+color: #ffffff;
+}
+
+.navbar-nav .dropdown-toggle.show {
+color: #ffffff !important; 
+}
+
+.dropdown-menu-custom {
+background-color: #343a40;
+border-radius: 10px;
+}
+
+
+.dropdown-item-custom {
+color: #ffffff;
+}
+
+.dropdown-item-custom:hover {
+background-color: #444d56;
+color: #ffffff;
+}
+
+
+.navbar-nav {
+align-items: center;
+}
+.dropdown-menu-custom {
+max-height: 300px; 
+overflow-y: auto; 
+background-color: #343a40;
+border-radius: 10px;
+}
+.modal-dialog {
+max-width: 70%; 
+}
+
+.modal-body img {
+width: 100%; 
+height: auto;
 }

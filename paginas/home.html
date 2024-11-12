@@ -5,84 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    <style>
-        footer, header{
-            background-color: #29a16c;
-            
-        }
-        
-        .calendar-table td {
-            text-align: center;
-            vertical-align: middle;
-            padding: 10px;
-            height: 5px;
-        }
-        .calendar-table .header {
-            background-color: #f8f9fa;
-            font-weight: bold;
-        }
-        .calendar-table .today {
-            background-color: #e9ecef;
-            font-weight: bold;
-        }
-        .calendar-container {
-            margin-top: 76px;
-            margin-left: 70px;
-            width: auto;
-            height: auto;
-            border-style: solid;
-            border-radius: 20px;
-            border: 1px solid #ddd;
-            padding: 20px;            
-        }
-        .calendar-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 10px;
-        }
-    .contenedorPadre {
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        gap: 40px;
-    }
-
-    .custom-card {
-        width: 200px;
-        height: 200px;
-        border: 1px solid #ddd;
-        border-radius: 8px;
-        overflow: hidden;
-    }
-    .custom-card img {
-        padding-top: 20px;
-        display: block;
-        margin: 0 auto;
-        width: 80px; /* Ajusta el tamaño según sea necesario */
-        height: auto;
-    }
-    .custom-card a {
-        display: block;
-        height: 100%;
-        text-decoration: none;
-        color: inherit;
-    }
-    #prevMonth, #nextMonth {
-      background-color: #29a16c; /* Verde */
-      color: #ffffff; /* Blanco */
-      border: none; /* Sin borde */
-      padding: 10px 20px;
-      border-radius: 5px;
-      font-size: 16px;
-      cursor: pointer;
-    }
-
-    #prevMonth:hover,
-    #nextMonth:hover {
-      background-color: #218838; /* Verde más oscuro al pasar el cursor */
-    }
-
-    </style>
+    <link href="../css/style.css" rel="stylesheet">
 </head>
 <body>
     <header class="d-flex align-items-center justify-content-between p-2 border-bottom">
@@ -90,23 +13,98 @@
         <div class="d-flex align-items-center ms-5">
             <img src="https://miel.unlam.edu.ar/vista/imagenes/logos/unlam/logo-unlam-34.png" alt="unlam" class="me-3" style="width: 100px;">
         </div>
-
-        <form class="form-inline d-flex">
-            <input class="form-control me-2" type="search" placeholder="Busca tu tramite..." aria-label="Buscar" style="width: 400px;">
-        </form>
-
         <div class="d-flex align-items-center">
             <div class="text-end me-3">
-                <p class="mb-0">RUGNA, JONATHAN NAHUEL</p>
-                <a href="/paginas/perfil.html" class="text-decoration-none me-2">Mi Perfil</a>
+                <p class="mb-0 text-white">RUGNA, JONATHAN NAHUEL</p>
+                <a href="../paginas/perfil.html" class="text-decoration-none me-2 text-white">Mi Perfil</a>
                 <span class="text-muted">|</span>
-                <a href="#" class="text-decoration-none ms-2 me-2">Ayuda</a>
+                <a href="#" class="text-decoration-none ms-2 me-2 text-white">Ayuda</a>
                 <span class="text-muted">|</span>
-                <a href="/paginas/login.html" class="text-decoration-none ms-2">Cerrar Sesión</a>
+                <a href="/paginas/login.html" class="text-decoration-none ms-2 text-white">Cerrar Sesión</a>
             </div>
             <img src="https://i.redd.it/szn7f3ln8jr31.jpg" alt="Perfil" class="rounded-circle" style="width: 50px; height: 50px;">
         </div>
     </header>
+    <nav class="navbar navbar-expand-lg navbar-custom mb-4">
+        <div class="container-fluid">
+            <ul class="navbar-nav ms-5 align-items-center">
+                <!-- Botón para "Volver al Inicio" -->
+           
+                
+    
+                <!-- Menú desplegable para "Mi Matrícula" -->
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle nav-button" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        Mi Matrícula
+                    </a>
+                    <ul class="dropdown-menu dropdown-menu-custom">
+                        <li><a class="dropdown-item dropdown-item-custom" href="/paginas/mi-matricula.html">Ver Matrícula</a></li>
+                        <li><a class="dropdown-item dropdown-item-custom" href="/paginas/estado-matricula.html">Estado de Matrícula</a></li>
+                    </ul>
+                </li>
+    
+                <!-- Menú desplegable para "Inscripciones" -->
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle nav-button" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        Inscripciones
+                    </a>
+                    <ul class="dropdown-menu dropdown-menu-custom">
+                        <li><a class="dropdown-item dropdown-item-custom" href="/paginas/inscripciones.html">Ofertas de Materias</a></li>
+                        <li><a class="dropdown-item dropdown-item-custom" href="/paginas/inscripciones.html">Fechas de Final</a></li>
+                    </ul>
+                </li>
+    
+                <!-- Menú desplegable para "Trámites Online" -->
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle nav-button" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        Trámites Online
+                    </a>
+                    <ul class="dropdown-menu dropdown-menu-custom">
+                        <li><a class="dropdown-item dropdown-item-custom" href="/paginas/reincorporaciones.html">Reincorporaciones</a></li>
+                        <li><a class="dropdown-item dropdown-item-custom" href="/paginas/cert-alumno-regular.html">Cert. de Alumno Regular</a></li>
+                        <li><a class="dropdown-item dropdown-item-custom" href="/paginas/cert-materias-aprobadas.html">Cert. de Materias Aprobadas</a></li>
+                        <li><a class="dropdown-item dropdown-item-custom" href="/paginas/sol-titulos.html">Sol. Títulos/Analíticos de Grado/Pre Grado/Pos Grado</a></li>
+                        <li><a class="dropdown-item dropdown-item-custom" href="/paginas/sol-analitico-parcial.html">Sol. Analítico Parcial</a></li>
+                        <li><a class="dropdown-item dropdown-item-custom" href="/paginas/sol-cambio-simul-carreras.html">Sol. Cambio/Simul. Carreras</a></li>
+                        <li><a class="dropdown-item dropdown-item-custom" href="/paginas/constancia-examen-parcial.html">Constancias Exámen Parcial</a></li>
+                        <li><a class="dropdown-item dropdown-item-custom" href="/paginas/constancia-examen-final.html">Constancias Exámen Final</a></li>
+                        <li><a class="dropdown-item dropdown-item-custom" href="/paginas/exencion-correlativas.html">Exención de Correlativas</a></li>
+                        <li><a class="dropdown-item dropdown-item-custom" href="/paginas/sol-baja-inscripcion-anual.html">Solicitud Baja Inscripcion Anual</a></li>
+                        <li><a class="dropdown-item dropdown-item-custom" href="/paginas/sol-legalizacion-programas.html">Solicitud Legalización de Programas</a></li>
+                        <li><a class="dropdown-item dropdown-item-custom" href="/paginas/reclamo-notas.html">Reclamo de Notas</a></li>
+                        <li><a class="dropdown-item dropdown-item-custom" href="/paginas/boleto-estudiantil.html">Boleto Estudiantil</a></li>
+                        <li><a class="dropdown-item dropdown-item-custom" href="/paginas/activaciones.html">Activaciones</a></li>
+                        <li><a class="dropdown-item dropdown-item-custom" href="/paginas/constancia-titulo-en-tramite.html">Constancia Título en Trámite</a></li>
+                        <li><a class="dropdown-item dropdown-item-custom" href="/paginas/sol-liberta-universitaria.html">Solicitud de libreta universitaria</a></li>
+                        <li><a class="dropdown-item dropdown-item-custom" href="/paginas/cambio-de-plan.html">Cambio de plan</a></li>
+                        <li><a class="dropdown-item dropdown-item-custom" href="/paginas/sol-homologaciones.html">Solicitud de Homologaciones Interdepartamentales</a></li>
+                        <li><a class="dropdown-item dropdown-item-custom" href="/paginas/sol-excepcionalidad.html">Solicitud de Excepcionalidad</a></li>
+                        <li><a class="dropdown-item dropdown-item-custom" href="/paginas/sol-alta-baja-cambio-eamyc.html">Solicitud Alta/Baja/Cambio/Simul (EAMyC)</a></li>
+                        <li><a class="dropdown-item dropdown-item-custom" href="/paginas/cert-competencias-basicas.html">Certificado Competencias Básicas</a></li>
+                    </ul>
+                </li>
+                <li class="nav-item w-20">
+                    <button class="nav-button" data-bs-toggle="modal" data-bs-target="#mapaModal">Mapa UNLaM</button>
+                </li>
+    
+            </ul>
+            
+        </div>
+    </nav>
+    <!-- Modal -->
+<div class="modal fade" id="mapaModal" tabindex="-1" aria-labelledby="mapaModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="mapaModalLabel">Mapa UNLaM</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <img src="https://1.bp.blogspot.com/-_qrW4LJX45s/Wv8Z4ojCZDI/AAAAAAAABYA/Dsj1aSPoCikW24XDR795LKVSoU-dlpSrwCLcBGAs/s1600/mapa_unlam.jpg" class="img-fluid" alt="Mapa UNLaM">
+            </div>
+        </div>
+    </div>
+</div>
 
     <div class="contenedorPadre col">
         <div class="calendar-container shadow">
@@ -130,8 +128,10 @@
                 <tbody id="calendarDays"></tbody>
             </table>
         </div>
+
+        <div class="div">  <h5 class="text-left mb-0 p-3">Tramites Principales</h5>
         <div class="text-center">
-            <h5 class="text-center mb-0 p-4">Tramites Principales</h5>
+          
             <div class="container mt-1">
                 <div class="row row-cols-1 row-cols-md-2 g-2">
                     <div class="col"> <!-- card 1-->
@@ -181,50 +181,11 @@
               
         </div>
     </div>
+</div>
+    <footer>
+        d
+    </footer>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-    <script>
-        const calendarDays = document.getElementById("calendarDays");
-        const monthYear = document.getElementById("monthYear");
-        let currentDate = new Date();
-    
-        function renderCalendar(date) {
-            calendarDays.innerHTML = "";
-            const year = date.getFullYear();
-            const month = date.getMonth();
-            
-            monthYear.textContent = date.toLocaleString("default", { month: "long", year: "numeric" });
-    
-            const firstDayOfMonth = new Date(year, month, 1).getDay();
-            const daysInMonth = new Date(year, month + 1, 0).getDate();
-    
-            let dayCell = "";
-            for (let i = 0; i < firstDayOfMonth; i++) {
-                dayCell += "<td></td>"; // Espacios vacíos hasta el primer día del mes
-            }
-            for (let day = 1; day <= daysInMonth; day++) {
-                const isToday = day === currentDate.getDate() && month === currentDate.getMonth() && year === currentDate.getFullYear();
-                dayCell += `<td class="${isToday ? 'today' : ''}">${day}</td>`;
-                if ((day + firstDayOfMonth) % 7 === 0) {
-                    calendarDays.innerHTML += `<tr>${dayCell}</tr>`;
-                    dayCell = "";
-                }
-            }
-            if (dayCell) {
-                calendarDays.innerHTML += `<tr>${dayCell}</tr>`;
-            }
-        }
-    
-        document.getElementById("prevMonth").addEventListener("click", () => {
-            currentDate.setMonth(currentDate.getMonth() - 1);
-            renderCalendar(currentDate);
-        });
-    
-        document.getElementById("nextMonth").addEventListener("click", () => {
-            currentDate.setMonth(currentDate.getMonth() + 1);
-            renderCalendar(currentDate);
-        });
-    
-        renderCalendar(currentDate);
-    </script>
+    <script src="../js/calendario.js"></script>
 </body>
 </html>

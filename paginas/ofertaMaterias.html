@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Oferta de Materias</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="../css/style.css" rel="stylesheet">
+    <style>
+        .container {
+            margin-top: 50px;
+        }
+        .list-group-item {
+            background-color: #f8f9fa;
+            border: 1px solid #ddd;
+        }
+        .table-hover tbody tr:hover {
+            background-color: #f1f1f1;
+        }
+        .table thead th {
+            background-color: #158633;
+            color: white;
+        }
+        .table-bordered td, .table-bordered th {
+            border: 1px solid #ddd;
+        }
+        .table-light {
+            background-color: #e9ecef;
+        }
+    </style>
+</head>
+<body>
+    <header class="d-flex align-items-center justify-content-between p-2 border-bottom">
+        <div class="d-flex align-items-center ms-5">
+            <img src="https://miel.unlam.edu.ar/vista/imagenes/logos/unlam/logo-unlam-34.png" alt="unlam" class="me-3" style="width: 100px;">
+        </div>
+        <div class="d-flex align-items-center">
+            <div class="text-end me-3">
+                <p class="mb-0 text-white">RUGNA, JONATHAN NAHUEL</p>
+                <a href="/paginas/perfil.html" class="text-decoration-none me-2">Mi Perfil</a>
+                <span class="text-muted">|</span>
+                <a href="#" class="text-decoration-none ms-2 me-2">Ayuda</a>
+                <span class="text-muted">|</span>
+                <a href="/paginas/login.html" class="text-decoration-none ms-2">Cerrar Sesión</a>
+            </div>
+            <img src="https://i.redd.it/szn7f3ln8jr31.jpg" alt="Perfil" class="rounded-circle" style="width: 50px; height: 50px;">
+        </div>
+    </header>
+
+<!-- Barra de navegación -->
+<nav class="navbar navbar-expand-lg navbar-custom mb-4">
+    <div class="container-fluid">
+        <ul class="navbar-nav ms-5 align-items-center">
+            <!-- Botón para "Volver al Inicio" -->
+            <li class="nav-item">
+                <a href="home.html" class="nav-button">Volver al Inicio</a>
+            </li>
+
+            <!-- Menú desplegable para "Mi Matrícula" -->
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle nav-button" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    Mi Matrícula
+                </a>
+                <ul class="dropdown-menu dropdown-menu-custom">
+                    <li><a class="dropdown-item dropdown-item-custom" href="/paginas/mi-matricula.html">Ver Matrícula</a></li>
+                    <li><a class="dropdown-item dropdown-item-custom" href="/paginas/estado-matricula.html">Estado de Matrícula</a></li>
+                </ul>
+            </li>
+
+            <!-- Menú desplegable para "Inscripciones" -->
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle nav-button" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    Inscripciones
+                </a>
+                <ul class="dropdown-menu dropdown-menu-custom">
+                    <li><a class="dropdown-item dropdown-item-custom" href="/paginas/inscripciones.html">Inscripción a Materias</a></li>
+                </ul>
+            </li>
+
+            <!-- Menú desplegable para "Trámites Online" -->
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle nav-button" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    Trámites Online
+                </a>
+                <ul class="dropdown-menu dropdown-menu-custom">
+                    <li><a class="dropdown-item dropdown-item-custom" href="/paginas/tramites.html">Solicitud de Certificados</a></li>
+                    <li><a class="dropdown-item dropdown-item-custom" href="/paginas/tramites-baja.html">Solicitud de Baja</a></li>
+                </ul>
+            </li>
+        </ul>
+    </div>
+</nav>
+<div class="container">
+    <h2 class="text-center mb-4">Oferta de Materias</h2>
+    <p class="text-center mb-5">Oferta de Materias correspondiente al 2do Cuatrimestre año académico 2024. Haz clic en cada modalidad para más información.</p>
+
+    <div class="row">
+        <!-- Selección de Plan de Estudios -->
+        <div class="col-md-12 mb-4">
+            <h5 class="mb-3">Seleccione su Plan de Estudios</h5>
+            <div class="dropdown">
+                <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
+                    Seleccionar Plan
+                </button>
+                <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                    <li><a class="dropdown-item" href="#" data-plan="09-3">Plan: 09-3 - TEC. UNIVERSITARIA EN WEB - DTO. INGENIERIA</a></li>
+                    <li><a class="dropdown-item" href="#" data-plan="10-2">Plan: 10-2 - TEC. UNIVERSITARIA EN REDES - DTO. INGENIERIA</a></li>
+                    <li><a class="dropdown-item" href="#" data-plan="11-1">Plan: 11-1 - LIC. EN INGENIERIA DE SOFTWARE - DTO. INGENIERIA</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Tabla de Materias -->
+        <div class="col-md-12">
+            <table class="table table-bordered table-hover" id="materiasTable">
+                <thead class="table-light">
+                    <tr>
+                        <th>Código</th>
+                        <th>Descripción</th>
+                        <th>Cod. Comisión</th>
+                        <th>Turno</th>
+                        <th>Días</th>
+                        <th>Modalidad</th>
+                        <th>Sede</th>
+                        <th>Observación</th>
+                    </tr>
+                </thead>
+                <tbody id="materiasBody">
+                    <!-- Aquí se mostrarán las materias según el plan elegido -->
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="materiaModal" tabindex="-1" aria-labelledby="materiaModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="materiaModalLabel">Detalles de la Materia</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <h6 id="materiaDescripcion"></h6>
+        <p><strong>Código:</strong> <span id="materiaCodigo"></span></p>
+        <p><strong>Comisión:</strong> <span id="materiaComision"></span></p>
+        <p><strong>Turno:</strong> <span id="materiaTurno"></span></p>
+        <p><strong>Días:</strong> <span id="materiaDias"></span></p>
+        <p><strong>Modalidad:</strong> <span id="materiaModalidad"></span></p>
+        <p><strong>Sede:</strong> <span id="materiaSede"></span></p>
+        <p><strong>Observación:</strong> <span id="materiaObservacion"></span></p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+<script>
+    const materias = {
+        "09-3": [
+            {codigo: "2619", descripcion: "PROGRAMACION BASICA I", comision: "No Ofertada", turno: "N/A", dias: "Lunes, Miércoles", modalidad: "Virtual", sede: "UNLAM", observacion: "Ninguna"},
+            {codigo: "2620", descripcion: "INFORMATICA GENERAL", comision: "No Ofertada", turno: "N/A", dias: "Martes, Jueves", modalidad: "Presencial", sede: "UNLAM", observacion: "Ninguna"},
+            {codigo: "2619", descripcion: "REDES", comision: "No Ofertada", turno: "N/A", dias: "Lunes, Miércoles", modalidad: "Virtual", sede: "UNLAM", observacion: "Ninguna"},
+            {codigo: "2620", descripcion: "ALGEBRA LINEAL", comision: "No Ofertada", turno: "N/A", dias: "Lunes, Miércoles", modalidad: "Presencial", sede: "UNLAM", observacion: "Ninguna"}
+        ],
+        "10-2": [
+            {codigo: "5019", descripcion: "ESTRUCTURA DE DATOS", comision: "No Ofertada", turno: "N/A", dias: "Lunes, Miércoles", modalidad: "Presencial", sede: "UNLAM", observacion: "Ninguna"},
+            {codigo: "5020", descripcion: "FISICA GENERAL", comision: "No Ofertada", turno: "N/A", dias: "Lunes, Jueves", modalidad: "Virtual", sede: "UNLAM", observacion: "Ninguna"},
+            {codigo: "5021", descripcion: "CALCULO", comision: "No Ofertada", turno: "N/A", dias: "Martes, Jueves", modalidad: "Virtual", sede: "UNLAM", observacion: "Ninguna"}
+        ],
+        "11-1": [
+            {codigo: "8019", descripcion: "BASES DE DATOS", comision: "No Ofertada", turno: "N/A", dias: "Lunes, Jueves", modalidad: "Presencial", sede: "UNLAM", observacion: "Ninguna"}
+        ]
+    };
+
+    const tableBody = document.getElementById('materiasBody');
+    const modal = new bootstrap.Modal(document.getElementById('materiaModal'));
+    const materiaDescripcion = document.getElementById('materiaDescripcion');
+    const materiaCodigo = document.getElementById('materiaCodigo');
+    const materiaComision = document.getElementById('materiaComision');
+    const materiaTurno = document.getElementById('materiaTurno');
+    const materiaDias = document.getElementById('materiaDias');
+    const materiaModalidad = document.getElementById('materiaModalidad');
+    const materiaSede = document.getElementById('materiaSede');
+    const materiaObservacion = document.getElementById('materiaObservacion');
+
+    // Función para cargar las materias en la tabla según el plan
+    function cargarMaterias(plan) {
+        const selectedMaterias = materias[plan] || [];
+        tableBody.innerHTML = '';
+        selectedMaterias.forEach(materia => {
+            const row = document.createElement('tr');
+            row.innerHTML = `
+                <td>${materia.codigo}</td>
+                <td>${materia.descripcion}</td>
+                <td>${materia.comision}</td>
+                <td>${materia.turno}</td>
+                <td>${materia.dias}</td>
+                <td>${materia.modalidad}</td>
+                <td>${materia.sede}</td>
+                <td><button class="btn btn-info btn-sm" data-bs-toggle="modal" data-bs-target="#materiaModal" onclick="mostrarDetalles('${materia.codigo}')">Ver</button></td>
+
+            `;
+            tableBody.appendChild(row);
+        });
+    }
+
+    // Función para mostrar detalles de la materia
+    // Función para mostrar los detalles de la materia seleccionada en el modal
+    function mostrarDetalles(codigo) {
+    // Buscar la materia con el código proporcionado
+    let materiaSeleccionada = null;
+    for (let plan in materias) {
+        materiaSeleccionada = materias[plan].find(materia => materia.codigo === codigo);
+        if (materiaSeleccionada) break;
+    }
+
+    // Si se encuentra la materia, se actualiza el modal con la información
+    if (materiaSeleccionada) {
+        materiaDescripcion.textContent = materiaSeleccionada.descripcion;
+        materiaCodigo.textContent = materiaSeleccionada.codigo;
+        materiaComision.textContent = materiaSeleccionada.comision;
+        materiaTurno.textContent = materiaSeleccionada.turno;
+        materiaDias.textContent = materiaSeleccionada.dias;
+        materiaModalidad.textContent = materiaSeleccionada.modalidad;
+        materiaSede.textContent = materiaSeleccionada.sede;
+        materiaObservacion.textContent = materiaSeleccionada.observacion;
+
+        // Mostrar el modal
+        modal.show();
+    }
+}
+
+
+
+
+    // Función para manejar el cambio de plan
+    document.querySelectorAll('.dropdown-item').forEach(item => {
+        item.addEventListener('click', function() {
+            const plan = this.getAttribute('data-plan');
+            cargarMaterias(plan);
+        });
+    });
+</script>
+</body>
+</html>

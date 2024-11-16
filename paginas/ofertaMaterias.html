@@ -5,7 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Oferta de Materias</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet">
+
     <link href="../css/style.css" rel="stylesheet">
+    <link rel="stylesheet" href="../css/ofertaMaterias.css">
     <style>
         .container {
             margin-top: 50px;
@@ -27,6 +30,7 @@
         .table-light {
             background-color: #e9ecef;
         }
+
     </style>
 </head>
 <body>
@@ -47,67 +51,71 @@
         </div>
     </header>
 
-<!-- Barra de navegación -->
 <nav class="navbar navbar-expand-lg navbar-custom mb-4">
-    <div class="container-fluid">
-        <ul class="navbar-nav ms-5 align-items-center">
+    <div class="container-fluid content">
+        <ul class="navbar-nav ms-4 items">
             <!-- Botón para "Volver al Inicio" -->
-            <li class="nav-item">
+            <li class="nav-item" style="margin-bottom: 5px;">
                 <a href="home.html" class="nav-button">Volver al Inicio</a>
             </li>
 
             <!-- Menú desplegable para "Mi Matrícula" -->
-            <li class="nav-item dropdown">
+            <div class="dropdown nav-item">
                 <a class="nav-link dropdown-toggle nav-button" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                     Mi Matrícula
                 </a>
-                <ul class="dropdown-menu dropdown-menu-custom">
+                <ul class="dropdown-menu dropdown-menu-custom menu">
                     <li><a class="dropdown-item dropdown-item-custom" href="/paginas/mi-matricula.html">Ver Matrícula</a></li>
                     <li><a class="dropdown-item dropdown-item-custom" href="/paginas/estado-matricula.html">Estado de Matrícula</a></li>
                 </ul>
-            </li>
+            </div>
 
             <!-- Menú desplegable para "Inscripciones" -->
-            <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle nav-button" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            <div class="dropdown nav-item">
+                <button class="nav-link dropdown-toggle nav-button" type="button" data-bs-toggle="dropdown" aria-expanded="false">
                     Inscripciones
-                </a>
-                <ul class="dropdown-menu dropdown-menu-custom">
+                </button>
+                <ul class="dropdown-menu dropdown-menu-custom menu">
                     <li><a class="dropdown-item dropdown-item-custom" href="/paginas/inscripciones.html">Inscripción a Materias</a></li>
                 </ul>
-            </li>
+            </div>
 
             <!-- Menú desplegable para "Trámites Online" -->
-            <li class="nav-item dropdown">
+            <div class="dropdown nav-item mt-1">
                 <a class="nav-link dropdown-toggle nav-button" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                     Trámites Online
                 </a>
-                <ul class="dropdown-menu dropdown-menu-custom">
+                <ul class="dropdown-menu dropdown-menu-custom menu">
                     <li><a class="dropdown-item dropdown-item-custom" href="/paginas/tramites.html">Solicitud de Certificados</a></li>
                     <li><a class="dropdown-item dropdown-item-custom" href="/paginas/tramites-baja.html">Solicitud de Baja</a></li>
                 </ul>
-            </li>
+            </div>
         </ul>
     </div>
 </nav>
+
+
 <div class="container">
     <h2 class="text-center mb-4">Oferta de Materias</h2>
-    <p class="text-center mb-5">Oferta de Materias correspondiente al 2do Cuatrimestre año académico 2024. Haz clic en cada modalidad para más información.</p>
+    <p class="text-center mb-5">Oferta de Materias correspondiente al 2do Cuatrimestre del año académico 2024.</p>
 
     <div class="row">
         <!-- Selección de Plan de Estudios -->
         <div class="col-md-12 mb-4">
             <h5 class="mb-3">Seleccione su Plan de Estudios</h5>
             <div class="dropdown">
-                <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
-                    Seleccionar Plan
+                <button class="btn btn-success dropdown-toggle planes" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
+                    <i class="fas fa-caret-down"></i> <!-- Ícono de la flecha desplegable -->
+                    <span class="dropdown-text">Plan: 09-3 - TEC. UNIVERSITARIA EN WEB - DTO. INGENIERIA</span>
                 </button>
-                <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                
+                <ul class="dropdown-menu menu" aria-labelledby="dropdownMenuButton">
                     <li><a class="dropdown-item" href="#" data-plan="09-3">Plan: 09-3 - TEC. UNIVERSITARIA EN WEB - DTO. INGENIERIA</a></li>
                     <li><a class="dropdown-item" href="#" data-plan="10-2">Plan: 10-2 - TEC. UNIVERSITARIA EN REDES - DTO. INGENIERIA</a></li>
                     <li><a class="dropdown-item" href="#" data-plan="11-1">Plan: 11-1 - LIC. EN INGENIERIA DE SOFTWARE - DTO. INGENIERIA</a></li>
                 </ul>
             </div>
+            
         </div>
 
         <!-- Tabla de Materias -->
@@ -118,11 +126,12 @@
                         <th>Código</th>
                         <th>Descripción</th>
                         <th>Cod. Comisión</th>
-                        <th>Turno</th>
-                        <th>Días</th>
-                        <th>Modalidad</th>
-                        <th>Sede</th>
-                        <th>Observación</th>
+                        <th class="ver">Turno</th>
+                        <th class="ver">Días</th>
+                        <th class="ver">Modalidad</th>
+                        <th class="ver">Sede</th>
+                        <th class="observacion">Informacion</th>
+                       
                     </tr>
                 </thead>
                 <tbody id="materiasBody">
@@ -135,28 +144,33 @@
 
 <!-- Modal -->
 <div class="modal fade" id="materiaModal" tabindex="-1" aria-labelledby="materiaModalLabel" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="materiaModalLabel">Detalles de la Materia</h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <div class="modal-body">
-        <h6 id="materiaDescripcion"></h6>
-        <p><strong>Código:</strong> <span id="materiaCodigo"></span></p>
-        <p><strong>Comisión:</strong> <span id="materiaComision"></span></p>
-        <p><strong>Turno:</strong> <span id="materiaTurno"></span></p>
-        <p><strong>Días:</strong> <span id="materiaDias"></span></p>
-        <p><strong>Modalidad:</strong> <span id="materiaModalidad"></span></p>
-        <p><strong>Sede:</strong> <span id="materiaSede"></span></p>
-        <p><strong>Observación:</strong> <span id="materiaObservacion"></span></p>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="materiaModalLabel">Detalles de la Materia</h5>
+          
+        </div>
+        <div class="modal-body">
+          <h6 id="materiaDescripcion"></h6>
+          <p><strong>Código:</strong> <span id="materiaCodigo"></span></p>
+          <p><strong>Comisión:</strong> <span id="materiaComision"></span></p>
+          <p><strong>Turno:</strong> <span id="materiaTurno"></span></p>
+          <p><strong>Días:</strong> <span id="materiaDias"></span></p>
+          <p><strong>Modalidad:</strong> <span id="materiaModalidad"></span></p>
+          <p><strong>Sede:</strong> <span id="materiaSede"></span></p>
+          <p><strong>Observación:</strong> <span id="materiaObservacion"></span></p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+        </div>
       </div>
     </div>
   </div>
-</div>
+  
+
+<footer>
+    d
+</footer>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 <script>
@@ -198,11 +212,11 @@
                 <td>${materia.codigo}</td>
                 <td>${materia.descripcion}</td>
                 <td>${materia.comision}</td>
-                <td>${materia.turno}</td>
-                <td>${materia.dias}</td>
-                <td>${materia.modalidad}</td>
-                <td>${materia.sede}</td>
-                <td><button class="btn btn-info btn-sm" data-bs-toggle="modal" data-bs-target="#materiaModal" onclick="mostrarDetalles('${materia.codigo}')">Ver</button></td>
+                <td class="ver">${materia.turno}</td>
+                <td class="ver">${materia.dias}</td>
+                <td class="ver">${materia.modalidad}</td>
+                <td class="ver">${materia.sede}</td>
+                <td class="observacion"><button class="btn observacion boton-ver" data-bs-toggle="modal" data-bs-target="#materiaModal" onclick="mostrarDetalles('${materia.codigo}')">Ver</button></td>
 
             `;
             tableBody.appendChild(row);
@@ -236,7 +250,7 @@
 }
 
 
-
+    cargarMaterias('09-3');
 
     // Función para manejar el cambio de plan
     document.querySelectorAll('.dropdown-item').forEach(item => {
@@ -245,6 +259,15 @@
             cargarMaterias(plan);
         });
     });
+    document.querySelectorAll('.dropdown-item').forEach(item => {
+    item.addEventListener('click', function (event) {
+        event.preventDefault(); // Evita que la página recargue
+        const selectedPlanText = this.textContent;
+        const dropdownButton = document.getElementById('dropdownMenuButton');
+        dropdownButton.textContent = selectedPlanText;
+    });
+});
+
 </script>
 </body>
 </html>

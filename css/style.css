@@ -267,3 +267,160 @@ height: auto;
 .holiday {
     background-color: #f28b82; /* Color para los días feriados */
 }
+
+.gap-4{
+    gap: 4.5rem !important;
+}
+.calend{
+    display: none;
+}
+
+.modal-dialog {
+    max-width: 90%; 
+    margin: 30px auto; 
+    display: flex;
+    justify-content: center;
+    
+}
+
+
+.modal-backdrop {
+    width: 100%;
+    height: 200vh;
+    background-color: rgba(0, 0, 0, 0.75); 
+}
+
+/* Centrar el calendario dentro del modal */
+.calendar-container {
+    width: 100%;
+    max-width: 100%; /* Asegura que el calendario ocupe todo el espacio disponible */
+    overflow-x: auto; /* Habilitar desplazamiento horizontal si el calendario es muy grande */
+    margin: 0 auto;  /* Centrar el calendario */
+    display: block;
+}
+
+/* Estilo para la tabla del calendario */
+.calendar-table {
+    width: 100%;
+    font-size: 12px; /* Reducir el tamaño de la fuente */
+}
+
+.calendar-table th,
+.calendar-table td {
+    padding: 8px;  /* Reducir el padding */
+    text-align: center;  /* Centrar el texto */
+}
+
+@media (max-width: 600px) {
+    .ms-5{
+        margin-left: 0px !important;
+    }
+    .calendar-container {
+        display: block;
+    }
+    .card-title{
+        font-size: 17px;
+    }
+    .calend{
+        display: block;
+    }
+    .calendar-table td {
+        font-size: 10px; /* Reducir el tamaño de la fuente en pantallas pequeñas */
+        padding: 5px;    /* Reducir el padding */
+    }
+
+    .calendar-header h4 {
+        font-size: 14px; /* Ajustar el tamaño de la fuente de la cabecera */
+    }
+    
+
+    /* Mostrar el botón para ver el calendario */
+    #toggleCalendar {
+        display: block;
+        margin: 20px auto;
+        text-align: center;
+    }
+    .calendar-section {
+        display: none;
+    }
+
+    .tramites-section{
+        width: 100%;
+    }
+    .contenedorPadre{
+        padding: 40px;
+        display: flex;
+    }
+
+    .tramites-container {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 20px;
+        justify-content: center;
+    }
+    .text{
+        padding: 0 !important;
+        margin-bottom: 10px !important;
+    }
+    
+    .custom-card {
+        flex: 1 1 200px; /* Ancho mínimo de 200px, se adapta automáticamente */
+        max-width: 300px;
+    }
+    .dropdown-menu {
+        width: 100%;
+        left: 0 !important; /* Asegura que se alinee correctamente */
+    }
+
+    /* Ajustamos el tamaño de los ítems del menú */
+    .dropdown-item {
+        padding: 10px;
+        font-size: 12px;
+    }
+
+    .dropdown-toggle::after {
+        display: none; /* Opcional: elimina el ícono de la flecha */
+    }
+.content{
+    display: flex;
+    justify-content: flex-start;
+    padding: 0 !important;
+}
+    .items{
+        width: 100%;
+        display: flex;
+        justify-content: flex-start;
+        flex-direction: row;
+        flex-wrap: wrap;
+        margin-bottom: 10px;
+       
+    }
+
+    
+.nav-button{
+    font-size: 0.8em;
+}
+.tramites-container {
+    gap: 100px;
+}
+
+.custom-card {
+    width: 100px;
+}
+
+.d-flex {
+    display: flex;
+}
+
+.gap-4 {
+   gap: 2.5rem !important;
+}
+
+}
+
+/* Mostrar el calendario y ocultar trámites en pantallas mayores a 600px */
+@media (min-width: 601px) {
+    .tramites-section {
+        display: block;
+    }
+}

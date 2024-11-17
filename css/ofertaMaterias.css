@@ -50,7 +50,7 @@ table td {
     }
     .observacion {
       display: table-cell;
-      width: 100%; 
+      width: 80%; 
     }
     .container-fluid > .barra{
         width: 100% !important;

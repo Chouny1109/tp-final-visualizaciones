@@ -1,5 +1,7 @@
 const calendarDays = document.getElementById("calendarDays");
+const calendarDayss = document.getElementById("calendarDayss");
 const monthYear = document.getElementById("monthYear");
+const monthYearr = document.getElementById("monthYearr");
 const tooltip = document.getElementById("tooltip");
 let currentDate = new Date();
 
@@ -43,17 +45,21 @@ function hideTooltip() {
 
 function renderCalendar(date) {
     calendarDays.innerHTML = "";
+    calendarDayss.innerHTML = "";
     const year = date.getFullYear();
     const month = date.getMonth();
 
     monthYear.textContent = date.toLocaleString("default", { month: "long", year: "numeric" });
+    monthYearr.textContent = date.toLocaleString("default", { month: "long", year: "numeric" });
 
     const firstDayOfMonth = new Date(year, month, 1).getDay();
     const daysInMonth = new Date(year, month + 1, 0).getDate();
 
     let dayCell = "";
+    let dayCell1 = "";
     for (let i = 0; i < firstDayOfMonth; i++) {
         dayCell += "<td></td>";
+        dayCell1 += "<td></td>";
     }
     for (let day = 1; day <= daysInMonth; day++) {
         const isToday = day === currentDate.getDate() && month === currentDate.getMonth() && year === currentDate.getFullYear();
@@ -67,13 +73,17 @@ function renderCalendar(date) {
         }
 
         dayCell += `<td class="${classes}" onmouseover="showTooltip(event, '${tooltipMessage}')" onmouseout="hideTooltip()">${day}</td>`;
+        dayCell1 += `<td class="${classes}" onmouseover="showTooltip(event, '${tooltipMessage}')" onmouseout="hideTooltip()">${day}</td>`;
         if ((day + firstDayOfMonth) % 7 === 0) {
             calendarDays.innerHTML += `<tr>${dayCell}</tr>`;
+            calendarDayss.innerHTML += `<tr>${dayCell1}</tr>`;
             dayCell = "";
+            dayCell1 = "";
         }
     }
-    if (dayCell) {
+    if (dayCell || dayCell1) {
         calendarDays.innerHTML += `<tr>${dayCell}</tr>`;
+        calendarDayss.innerHTML += `<tr>${dayCell1}</tr>`;
     }
 }
 
@@ -86,5 +96,24 @@ document.getElementById("nextMonth").addEventListener("click", () => {
     currentDate.setMonth(currentDate.getMonth() + 1);
     renderCalendar(currentDate);
 });
+document.getElementById("prevMonthh").addEventListener("click", () => {
+    currentDate.setMonth(currentDate.getMonth() - 1);
+    renderCalendar(currentDate);
+});
+
+document.getElementById("nextMonthh").addEventListener("click", () => {
+    currentDate.setMonth(currentDate.getMonth() + 1);
+    renderCalendar(currentDate);
+});
 
 renderCalendar(currentDate);
+
+$('#calendarioModal').on('shown.bs.modal', function () {
+    console.log("Modal mostrado. Renderizando calendario...");
+    console.log("Fecha actual:", currentDate);
+    renderCalendar(currentDate);
+    $('#calendarioModal').modal('show');  
+});
+// Para mostrar el modal
+
+

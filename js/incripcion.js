@@ -1,3 +1,38 @@
+document.getElementById('generate-pdf').addEventListener('click', () => {
+    // Construir dinámicamente el contenido HTML para el PDF
+    let htmlContent = `
+        <h2>Inscripción realizada con éxito</h2>
+        <p>Te has inscrito con éxito en las siguientes materias:</p>
+        <ul>
+    `;
+
+    // Recorremos las materias seleccionadas
+    seleccionadas.forEach(item => {
+        const [materia, horario] = item.split(' - ');
+        htmlContent += `
+            <li>
+                <strong>${materia}</strong>: ${horario}
+            </li>
+        `;
+    });
+
+    // Cerramos la lista
+    htmlContent += `
+        </ul>
+        <p>Puedes verificar las materias a las que te inscribiste en cualquier momento.</p>
+    `;
+
+    // Crear un contenedor temporal en el DOM
+    const tempDiv = document.createElement('div');
+    tempDiv.innerHTML = htmlContent;
+
+    // Usar html2pdf para generar el PDF
+    html2pdf().from(tempDiv).save('inscripcion.pdf');
+
+    // Opcional: eliminar el contenedor temporal después de generar el PDF
+    tempDiv.remove();
+});
+
 const botones = document.querySelectorAll(".buttonIncri");
 let clickeo = false;  
 
@@ -17,24 +52,18 @@ const carouselElement = document.getElementById('inscripcionCarousel');
 const prevBtn = carouselElement.querySelector('[data-bs-slide="prev"]');
 const nextBtn = carouselElement.querySelector('[data-bs-slide="next"]');
 
-
 nextBtn.disabled = true;
-
 
 carouselElement.addEventListener('slid.bs.carousel', () => {
     const isFirstSlide = carouselElement.querySelector('.carousel-item:first-child').classList.contains('active');
     prevBtn.disabled = isFirstSlide;
 
-   
     verificarSeleccionDeHorarios();
 });
-
-
 
 const buttons = document.querySelectorAll('.buttonIncri');
 const materiasSeleccionadasContainer = document.getElementById('materiasSeleccionadas');
 const seleccionadas = [];
-
 
 buttons.forEach(button => {
     button.addEventListener('click', function() {
@@ -59,13 +88,11 @@ buttons.forEach(button => {
     });
 });
 
-
 materiasSeleccionadasContainer.addEventListener('click', function(event) {
     if (event.target && event.target.classList.contains('buttonIncri1')) {
         const horarioSeleccionado = event.target.innerText;
         const materiaSeleccionada = event.target.closest('.col-md-4').querySelector('h5').innerText;
 
-        // Desmarcar otros horarios de la misma materia
         const horariosMateria = event.target.closest('.horario').querySelectorAll('.buttonIncri1');
         horariosMateria.forEach(horario => {
             if (horario !== event.target) {
@@ -73,26 +100,21 @@ materiasSeleccionadasContainer.addEventListener('click', function(event) {
             }
         });
 
-        // Alternar la clase 'selected' en el horario clickeado
         event.target.classList.toggle('selected');
 
-        // Buscar el índice de la materia con el horario seleccionado en el array 'seleccionadas'
-        const materiaYHorario = `${materiaSeleccionada} - ${horarioSeleccionado}`;
-        const indexExistente = seleccionadas.findIndex(item => item === materiaYHorario);
-
-        // Si el horario está seleccionado, eliminarlo
+        const indexExistente = seleccionadas.findIndex(item => item.split(' - ')[0] === materiaSeleccionada);
         if (indexExistente !== -1) {
             seleccionadas.splice(indexExistente, 1);
-        } else {
-            // Si no está seleccionado, agregarlo
+        }
+
+        if (event.target.classList.contains('selected')) {
+            const materiaYHorario = `${materiaSeleccionada} - ${horarioSeleccionado}`;
             seleccionadas.push(materiaYHorario);
         }
 
-        // Actualizar la visualización de las materias seleccionadas
         const confirmacionHorario = document.getElementById("seleccionadasIncripcion");
         confirmacionHorario.innerHTML = '';
 
-        // Mostrar las materias seleccionadas correctamente
         seleccionadas.forEach(item => {
             confirmacionHorario.innerHTML += `
                 <div class="col-md-4 mb-3 text-center">
@@ -104,115 +126,96 @@ materiasSeleccionadasContainer.addEventListener('click', function(event) {
             `;
         });
 
-        // Verificar si la selección de horarios es válida
         verificarSeleccionDeHorarios();
     }
 });
 
-
-
-
-
-
-
 let currentStep = 1;
 
-    function updateProgress() {
-        const progressBar = document.getElementById("progressBar");
-        const stepMaterias = document.getElementById("stepMaterias");
-        const stepHorarios = document.getElementById("stepHorarios");
-        const stepConfirmacion = document.getElementById("stepConfirmacion");
-        const prevBtn = document.getElementById("prevBtn");
-        const nextBtn = document.getElementById("nextBtn");
-    
-      
-        switch (currentStep) {
-            case 1:
-                progressBar.style.width = "33%";
-                progressBar.innerText = "Paso 1 de 3";
-                progressBar.setAttribute("aria-valuenow", "33");
-    
-                stepMaterias.classList.add("text-primary");
-                stepHorarios.classList.remove("text-primary");
-                stepConfirmacion.classList.remove("text-primary");
-    
-                prevBtn.disabled = true;
-                nextBtn.innerText = "Siguiente";
-                break;
-                case 2:
-                    progressBar.style.width = "66%";
-                    progressBar.innerText = "Paso 2 de 3";
-                    progressBar.setAttribute("aria-valuenow", "66");
-                
-                    stepMaterias.classList.remove("text-primary");
-                    stepHorarios.classList.add("text-primary");
-                    stepConfirmacion.classList.remove("text-primary");
-                
-                    prevBtn.disabled = false;
-                    nextBtn.innerText = "Siguiente";
-                
-                 
-                    verificarSeleccionDeHorarios();
-                    break;
-                
-                    case 3:
-                        progressBar.style.width = "100%";
-                        progressBar.innerText = "Paso 3 de 3";
-                        progressBar.setAttribute("aria-valuenow", "100");
-                    
-                        stepMaterias.classList.remove("text-primary");
-                        stepHorarios.classList.remove("text-primary");
-                        stepConfirmacion.classList.add("text-primary");
-                    
-                        prevBtn.disabled = true;
-                        nextBtn.innerText = "Finalizar";
-                    
-                        // Deshabilitar la funcionalidad de avance
-                        nextBtn.disabled = false;
-                    
-                        // Remover cualquier evento previo y asignar el evento para mostrar el modal
-                        nextBtn.removeEventListener('click', nextStep);
-                        nextBtn.removeAttribute('data-bs-slide'); // Evita que avance el carrusel
-                        nextBtn.addEventListener('click', mostrarModalConfirmacion);
-                        break;
-                    
-                    
-                
-        }
-    }
+function updateProgress() {
+    const progressBar = document.getElementById("progressBar");
+    const stepMaterias = document.getElementById("stepMaterias");
+    const stepHorarios = document.getElementById("stepHorarios");
+    const stepConfirmacion = document.getElementById("stepConfirmacion");
+    const prevBtn = document.getElementById("prevBtn");
+    const nextBtn = document.getElementById("nextBtn");
 
-    function verificarSeleccionDeHorarios() {
-        const materiasSeleccionadas = document.querySelectorAll('#materiasSeleccionadas h5').length;
-        const horariosSeleccionados = seleccionadas.length;
-    
-     
-        const nextBtn = document.querySelector('[data-bs-slide="next"]');
-        const isLastSlide = carouselElement.querySelector('.carousel-item:last-child').classList.contains('active');
-    
-      
-        nextBtn.disabled = (horariosSeleccionados < materiasSeleccionadas);
-    }
-    
-    function mostrarModalConfirmacion() {
-        const modal = new bootstrap.Modal(document.getElementById('modalConfirmacion'));
-        modal.show();
-    }
-    
-    function nextStep() {
-        if (currentStep < 3) {
-            currentStep++;
-            updateProgress();
-        }
-    }
-    
-    function prevStep() {
-        if (currentStep > 1) {
-            currentStep--;
-            updateProgress();
-        }
-    }
-    
-   
-    updateProgress();
+    switch (currentStep) {
+        case 1:
+            progressBar.style.width = "33%";
+            progressBar.innerText = "Paso 1 de 3";
+            progressBar.setAttribute("aria-valuenow", "33");
 
-    
+            stepMaterias.classList.add("text-primary");
+            stepHorarios.classList.remove("text-primary");
+            stepConfirmacion.classList.remove("text-primary");
+
+            prevBtn.disabled = true;
+            nextBtn.innerText = "Siguiente";
+            break;
+        case 2:
+            progressBar.style.width = "66%";
+            progressBar.innerText = "Paso 2 de 3";
+            progressBar.setAttribute("aria-valuenow", "66");
+
+            stepMaterias.classList.remove("text-primary");
+            stepHorarios.classList.add("text-primary");
+            stepConfirmacion.classList.remove("text-primary");
+
+            prevBtn.disabled = false;
+            nextBtn.innerText = "Siguiente";
+
+            verificarSeleccionDeHorarios();
+            break;
+
+        case 3:
+            progressBar.style.width = "100%";
+            progressBar.innerText = "Paso 3 de 3";
+            progressBar.setAttribute("aria-valuenow", "100");
+
+            stepMaterias.classList.remove("text-primary");
+            stepHorarios.classList.remove("text-primary");
+            stepConfirmacion.classList.add("text-primary");
+
+            prevBtn.disabled = true;
+            nextBtn.innerText = "Finalizar";
+
+            nextBtn.disabled = false;
+
+            nextBtn.removeEventListener('click', nextStep);
+            nextBtn.removeAttribute('data-bs-slide');
+            nextBtn.addEventListener('click', mostrarModalConfirmacion);
+            break;
+    }
+}
+
+function verificarSeleccionDeHorarios() {
+    const materiasSeleccionadas = document.querySelectorAll('#materiasSeleccionadas h5').length;
+    const horariosSeleccionados = seleccionadas.length;
+
+    const nextBtn = document.querySelector('[data-bs-slide="next"]');
+    const isLastSlide = carouselElement.querySelector('.carousel-item:last-child').classList.contains('active');
+
+    nextBtn.disabled = (horariosSeleccionados < materiasSeleccionadas);
+}
+
+function mostrarModalConfirmacion() {
+    const modal = new bootstrap.Modal(document.getElementById('modalConfirmacion'));
+    modal.show();
+}
+
+function nextStep() {
+    if (currentStep < 3) {
+        currentStep++;
+        updateProgress();
+    }
+}
+
+function prevStep() {
+    if (currentStep > 1) {
+        currentStep--;
+        updateProgress();
+    }
+}
+
+updateProgress();

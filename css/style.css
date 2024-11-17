@@ -291,7 +291,7 @@ height: auto;
 }
 
 /* Centrar el calendario dentro del modal */
-.calendar-container {
+.calendario {
     width: 100%;
     max-width: 100%; /* Asegura que el calendario ocupe todo el espacio disponible */
     overflow-x: auto; /* Habilitar desplazamiento horizontal si el calendario es muy grande */
@@ -300,13 +300,13 @@ height: auto;
 }
 
 /* Estilo para la tabla del calendario */
-.calendar-table {
+.table-calendar {
     width: 100%;
     font-size: 12px; /* Reducir el tamaño de la fuente */
 }
 
-.calendar-table th,
-.calendar-table td {
+.table-calendar,
+.table-calendar td {
     padding: 8px;  /* Reducir el padding */
     text-align: center;  /* Centrar el texto */
 }

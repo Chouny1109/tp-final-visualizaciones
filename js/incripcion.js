@@ -17,18 +17,24 @@ const carouselElement = document.getElementById('inscripcionCarousel');
 const prevBtn = carouselElement.querySelector('[data-bs-slide="prev"]');
 const nextBtn = carouselElement.querySelector('[data-bs-slide="next"]');
 
+
 nextBtn.disabled = true;
+
 
 carouselElement.addEventListener('slid.bs.carousel', () => {
     const isFirstSlide = carouselElement.querySelector('.carousel-item:first-child').classList.contains('active');
     prevBtn.disabled = isFirstSlide;
 
+   
     verificarSeleccionDeHorarios();
 });
+
+
 
 const buttons = document.querySelectorAll('.buttonIncri');
 const materiasSeleccionadasContainer = document.getElementById('materiasSeleccionadas');
 const seleccionadas = [];
+
 
 buttons.forEach(button => {
     button.addEventListener('click', function() {
@@ -53,6 +59,7 @@ buttons.forEach(button => {
     });
 });
 
+
 materiasSeleccionadasContainer.addEventListener('click', function(event) {
     if (event.target && event.target.classList.contains('buttonIncri1')) {
         const horarioSeleccionado = event.target.innerText;
@@ -66,26 +73,26 @@ materiasSeleccionadasContainer.addEventListener('click', function(event) {
             }
         });
 
-        // Toggle de la clase 'selected' del horario actual
+        // Alternar la clase 'selected' en el horario clickeado
         event.target.classList.toggle('selected');
 
-        // Eliminar o agregar la combinación materia-horario en el array
-        const indexExistente = seleccionadas.findIndex(item => item.split(' - ')[0] === materiaSeleccionada);
-        if (indexExistente !== -1) {
-            seleccionadas.splice(indexExistente, 1);  // Eliminar de seleccionadas si ya estaba
-        }
-        
+        // Buscar el índice de la materia con el horario seleccionado en el array 'seleccionadas'
+        const materiaYHorario = `${materiaSeleccionada} - ${horarioSeleccionado}`;
+        const indexExistente = seleccionadas.findIndex(item => item === materiaYHorario);
 
-        // Si está seleccionado, agregarlo al array
-        if (event.target.classList.contains('selected')) {
-            const materiaYHorario = `${materiaSeleccionada} - ${horarioSeleccionado}`;
+        // Si el horario está seleccionado, eliminarlo
+        if (indexExistente !== -1) {
+            seleccionadas.splice(indexExistente, 1);
+        } else {
+            // Si no está seleccionado, agregarlo
             seleccionadas.push(materiaYHorario);
         }
 
-        // Actualizar la vista de las materias seleccionadas
+        // Actualizar la visualización de las materias seleccionadas
         const confirmacionHorario = document.getElementById("seleccionadasIncripcion");
         confirmacionHorario.innerHTML = '';
 
+        // Mostrar las materias seleccionadas correctamente
         seleccionadas.forEach(item => {
             confirmacionHorario.innerHTML += `
                 <div class="col-md-4 mb-3 text-center">
@@ -97,9 +104,14 @@ materiasSeleccionadasContainer.addEventListener('click', function(event) {
             `;
         });
 
+        // Verificar si la selección de horarios es válida
         verificarSeleccionDeHorarios();
     }
 });
+
+
+
+
 
 
 

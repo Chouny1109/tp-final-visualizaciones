@@ -88,7 +88,8 @@
                         Inscripciones
                     </button>
                     <ul class="dropdown-menu dropdown-menu-custom menu">
-                        <li><a class="dropdown-item dropdown-item-custom" href="/paginas/inscripciones.html">Inscripción a Materias</a></li>
+                        <li><a class="dropdown-item dropdown-item-custom" href="/paginas/inscripcion.html">Inscripción a Materias</a></li>
+                        <li><a class="dropdown-item dropdown-item-custom" href="/paginas/ofertaMaterias.html">Oferta de Materias</a></li>
                     </ul>
                 </div>
     
@@ -115,14 +116,14 @@
     </nav>
     <!-- Modal -->
 <div class="modal fade" id="mapaModal" tabindex="-1" aria-labelledby="mapaModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
+    <div class="modal-dialog mapa">
         <div class="modal-content">
             <div class="modal-header">
                 <h5 class="modal-title" id="mapaModalLabel">Mapa UNLaM</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-                <img src="https://1.bp.blogspot.com/-_qrW4LJX45s/Wv8Z4ojCZDI/AAAAAAAABYA/Dsj1aSPoCikW24XDR795LKVSoU-dlpSrwCLcBGAs/s1600/mapa_unlam.jpg" class="img-fluid" alt="Mapa UNLaM">
+                <img class="mapa-img" src="https://1.bp.blogspot.com/-_qrW4LJX45s/Wv8Z4ojCZDI/AAAAAAAABYA/Dsj1aSPoCikW24XDR795LKVSoU-dlpSrwCLcBGAs/s1600/mapa_unlam.jpg" class="img-fluid" alt="Mapa UNLaM">
             </div>
         </div>
     </div>
@@ -214,7 +215,6 @@
         <div class="modal-content">
             <div class="modal-header">
                 <h5 class="modal-title" id="calendarioModalLabel">Calendario Académico</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
                 <!-- Calendar Section -->
@@ -243,9 +243,10 @@
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
             </div>
-          
+           
         </div>
     </div>
+    <div id="tooltipp" class="custom-tooltip"></div>
 </div>
 
 

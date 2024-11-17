@@ -84,6 +84,21 @@ cursor: pointer;
 background-color: #218838; /* Verde más oscuro al pasar el cursor */
 }
 
+#prevMonthh, #nextMonthh {
+    background-color: #29a16c; /* Verde */
+    color: #ffffff; /* Blanco */
+    border: none; /* Sin borde */
+    padding: 10px 20px;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    }
+    
+    #prevMonthh:hover,
+    #nextMonthh:hover {
+    background-color: #218838; /* Verde más oscuro al pasar el cursor */
+    }
+
 .buttonIncri{
     color: rgb(0, 0, 0);
     background-color: #fefefe;
@@ -416,7 +431,34 @@ height: auto;
    gap: 2.5rem !important;
 }
 
+#tooltip{
+    display: none;
 }
+
+
+
+.mapa{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 80px;
+    width: 90% !important;
+}
+
+.modal-content{
+    max-width: 99% !important;
+}
+.mapa-img{
+    height: 70vh !important;
+    max-width: 100% !important;
+}
+
+}
+
+.mapa{
+    width: 70%;
+}
+
 
 /* Mostrar el calendario y ocultar trámites en pantallas mayores a 600px */
 @media (min-width: 601px) {

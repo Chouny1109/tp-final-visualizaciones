@@ -79,6 +79,10 @@ table td {
     justify-content: flex-start;
     padding: 0 !important;
 }
+
+#materiasBody{
+  font-size: 13px;
+}
     .items{
         width: 100%;
         display: flex;

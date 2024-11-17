@@ -3,6 +3,7 @@ const calendarDayss = document.getElementById("calendarDayss");
 const monthYear = document.getElementById("monthYear");
 const monthYearr = document.getElementById("monthYearr");
 const tooltip = document.getElementById("tooltip");
+const tooltipp = document.getElementById("tooltipp");
 let currentDate = new Date();
 
 // Lista de feriados en Argentina (formato MM-DD)
@@ -36,11 +37,17 @@ function showTooltip(event, message) {
         tooltip.style.left = `${event.pageX + 10}px`;
         tooltip.style.top = `${event.pageY + 10}px`;
         tooltip.style.display = 'block';
+
+        tooltipp.textContent = message;
+        tooltipp.style.left = `${event.pageX + 10}px`;
+        tooltipp.style.top = `${event.pageY + 10}px`;
+        tooltipp.style.display = 'block';
     }
 }
 
 function hideTooltip() {
     tooltip.style.display = 'none';
+    tooltipp.style.display = 'none';
 }
 
 function renderCalendar(date) {

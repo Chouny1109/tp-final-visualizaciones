@@ -1,37 +1,126 @@
 document.getElementById('generate-pdf').addEventListener('click', () => {
-    // Construir dinámicamente el contenido HTML para el PDF
+  
     let htmlContent = `
-        <h2>Inscripción realizada con éxito</h2>
-        <p>Te has inscrito con éxito en las siguientes materias:</p>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f7f7f7;
+            color: #34495e;
+        }
+        .header {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .logo {
+            max-width: 300px;
+            display: block;
+            margin: 0 auto;
+        }
+        h2 {
+            color: #2c3e50;
+            font-size: 22px;
+        }
+        h3 {
+            color: #2980b9;
+            font-size: 18px;
+            margin-bottom: 10px;
+        }
+        .summary {
+            text-align: left;
+            margin: 20px;
+            font-size: 16px;
+            line-height: 1.6;
+        }
+        table {
+            width: 90%;
+            margin: 20px auto;
+            border-collapse: collapse;
+        }
+        th, td {
+            padding: 10px;
+            text-align: left;
+            border: 1px solid #ccc;
+        }
+        th {
+            background-color: #009a76;
+            color: #fff;
+        }
+        td {
+            background-color: #ecf0f1;
+        }
+        .terms {
+            margin: 20px;
+            font-size: 14px;
+            color: #7f8c8d;
+            line-height: 1.4;
+        }
+        .tramite{
+        padding: 10px;
+        }
+    </style>
+
+    <div class="header">
+        <img src="../imagenes/unlam.png" alt="Universidad Logo" class="logo">
+        <h3>Comprobante de Inscripción a Materias</h3>
+    </div>
+
+    <div class="summary">
+        <p>Alumno: <strong>XXX XXX XXXX</strong>, DNI: <strong>34673412</strong></p>
+        <p>Inscripción realizada para el <strong>2do Cuatrimestre del Año Académico 2024</strong>.</p>
+    </div>
+
+    <!-- Tabla de materias -->
+    <table>
+        <thead>
+            <tr>
+                <th>Materia</th>
+                <th>Comision</th>
+                <th>Estado</th>
+            </tr>
+        </thead>
+        <tbody>
+            ${seleccionadas.map(item => {
+                const [materia, horario] = item.split(' - ');
+                return `
+                    <tr>
+                        <td><strong>${materia}</strong></td>
+                        <td>${horario}</td>
+                        <td>Habilitado</td>
+                    </tr>
+                `;
+            }).join('')}
+        </tbody>
+    </table>
+      <div class="summary">      
+    <p><strong class="">Nro de trámite:</strong> 4456763234</p>
+      </div>
+   
+    <div class="terms">
+        <h3>Términos y Condiciones:</h3>
         <ul>
-    `;
-
-    // Recorremos las materias seleccionadas
-    seleccionadas.forEach(item => {
-        const [materia, horario] = item.split(' - ');
-        htmlContent += `
-            <li>
-                <strong>${materia}</strong>: ${horario}
-            </li>
-        `;
-    });
-
-    // Cerramos la lista
-    htmlContent += `
+            <li>La inscripción debe verificarse por Intraconsulta según el calendario académico.</li>
+            <li>Solo se podrán modificar materias que figuren como "CURSO CERRADO".</li>
+            <li>La inscripción se confirma únicamente si aparecen aulas y comisiones asignadas.</li>
+            <li>No se permite inscribirse a materias superpuestas en días/horarios.</li>
+            <li>La inscripción no garantiza la condición de alumno regular.</li>
         </ul>
-        <p>Puedes verificar las materias a las que te inscribiste en cualquier momento.</p>
-    `;
+    </div>
+`;
 
-    // Crear un contenedor temporal en el DOM
+htmlContent += `</div>`;
+
+
+
     const tempDiv = document.createElement('div');
     tempDiv.innerHTML = htmlContent;
 
-    // Usar html2pdf para generar el PDF
     html2pdf().from(tempDiv).save('inscripcion.pdf');
 
-    // Opcional: eliminar el contenedor temporal después de generar el PDF
     tempDiv.remove();
 });
+
 
 const botones = document.querySelectorAll(".buttonIncri");
 let clickeo = false;  
@@ -41,7 +130,7 @@ botones.forEach((boton) => {
         clickeo = true;
         boton.classList.toggle("selected");
 
-        if (clickeo) {
+        if(clickeo) {
             nextBtn.disabled = false;
         }
         verificarSeleccionDeHorarios()
@@ -65,29 +154,46 @@ const buttons = document.querySelectorAll('.buttonIncri');
 const materiasSeleccionadasContainer = document.getElementById('materiasSeleccionadas');
 const seleccionadas = [];
 
-buttons.forEach(button => {
+botones.forEach(button => {
     button.addEventListener('click', function() {
         const materiaSeleccionada = this.textContent || this.innerText;
 
-        const materiaHTML = `
-            <div class="col-md-4 mb-3 text-center">
-                <h5>${materiaSeleccionada}</h5>
-                <div class="horario">
-                    <button type="button" class="btn w-100 buttonIncri1" value="Lun-Vie 19 a 23hs. Com 368">Lun-Vie 19 a 23hs. Com 368</button>
-                    <button type="button" class="btn w-100 buttonIncri1" value="Miercoles 8 a 12hs. Com 368">Miercoles 8 a 12hs. Com 268</button>
-                    <button type="button" class="btn w-100 buttonIncri1" value="Jueves 19 a 23hs. Com 368">Jueves 19 a 23hs. Com 168</button>
-                </div>
-            </div>
-        `;
+const materiaIndex = seleccionadas.indexOf(materiaSeleccionada);
 
-        materiasSeleccionadasContainer.innerHTML += materiaHTML;
+if (materiaIndex === -1) {
+
+    seleccionadas.push(materiaSeleccionada);
+
+
+    const materiaHTML = `
+        <div class="col-md-4 mb-3 text-center" data-materia="${materiaSeleccionada}">
+            <h5>${materiaSeleccionada}</h5>
+            <div class="horario">
+                <button type="button" class="btn w-100 buttonIncri1" value="Lun-Vie 19 a 23hs. Com 368">Lun-Vie 19 a 23hs. Com 368 (Virtual)</button>
+                <button type="button" class="btn w-100 buttonIncri1" value="Miercoles 8 a 12hs. Com 368">Miercoles 8 a 12hs. Com 268 (Presencial)</button>
+                <button type="button" class="btn w-100 buttonIncri1" value="Jueves 19 a 23hs. Com 368">Jueves 19 a 23hs. Com 168 (Semi presencial)</button>
+            </div>
+        </div>
+    `;
+
+    materiasSeleccionadasContainer.innerHTML += materiaHTML;
+} else {
+    
+    seleccionadas.splice(materiaIndex, 1);
+
+    const materiaElement = materiasSeleccionadasContainer.querySelector(`[data-materia="${materiaSeleccionada}"]`);
+    if (materiaElement) {
+        materiaElement.remove();
+    }
+}
 
         const carouselElement = document.getElementById('inscripcionCarousel');
         const nextBtn = carouselElement.querySelector('[data-bs-slide="next"]');
         nextBtn.disabled = false;
+  
     });
 });
-
+const horariosPorMateria = {};
 materiasSeleccionadasContainer.addEventListener('click', function(event) {
     if (event.target && event.target.classList.contains('buttonIncri1')) {
         const horarioSeleccionado = event.target.innerText;
@@ -105,8 +211,14 @@ materiasSeleccionadasContainer.addEventListener('click', function(event) {
         const indexExistente = seleccionadas.findIndex(item => item.split(' - ')[0] === materiaSeleccionada);
         if (indexExistente !== -1) {
             seleccionadas.splice(indexExistente, 1);
+           
         }
-
+        if (event.target.classList.contains('selected')) {
+            horariosPorMateria[materiaSeleccionada] = true; 
+        } else {
+            delete horariosPorMateria[materiaSeleccionada]; 
+        }
+     
         if (event.target.classList.contains('selected')) {
             const materiaYHorario = `${materiaSeleccionada} - ${horarioSeleccionado}`;
             seleccionadas.push(materiaYHorario);
@@ -126,8 +238,9 @@ materiasSeleccionadasContainer.addEventListener('click', function(event) {
             `;
         });
 
-        verificarSeleccionDeHorarios();
+       
     }
+    verificarSeleccionDeHorarios();
 });
 
 let currentStep = 1;
@@ -164,6 +277,8 @@ function updateProgress() {
 
             prevBtn.disabled = false;
             nextBtn.innerText = "Siguiente";
+            nextBtn.addEventListener('click', nextStep);
+            nextBtn.removeEventListener('click', mostrarModalConfirmacion);
 
             verificarSeleccionDeHorarios();
             break;
@@ -177,30 +292,37 @@ function updateProgress() {
             stepHorarios.classList.remove("text-primary");
             stepConfirmacion.classList.add("text-primary");
 
-            prevBtn.disabled = true;
+            prevBtn.disabled = false;
             nextBtn.innerText = "Finalizar";
 
-            nextBtn.disabled = false;
+            
 
             nextBtn.removeEventListener('click', nextStep);
             nextBtn.removeAttribute('data-bs-slide');
             nextBtn.addEventListener('click', mostrarModalConfirmacion);
             break;
     }
+
+    console.log(currentStep);
 }
 
 function verificarSeleccionDeHorarios() {
+
     const materiasSeleccionadas = document.querySelectorAll('#materiasSeleccionadas h5').length;
-    const horariosSeleccionados = seleccionadas.length;
+
+    const cantidadHorariosSeleccionados = Object.keys(horariosPorMateria).length;
 
     const nextBtn = document.querySelector('[data-bs-slide="next"]');
-    const isLastSlide = carouselElement.querySelector('.carousel-item:last-child').classList.contains('active');
 
-    nextBtn.disabled = (horariosSeleccionados < materiasSeleccionadas);
+ 
+    nextBtn.disabled = cantidadHorariosSeleccionados !== materiasSeleccionadas;
 }
 
 function mostrarModalConfirmacion() {
-    const modal = new bootstrap.Modal(document.getElementById('modalConfirmacion'));
+    const modal = new bootstrap.Modal(document.getElementById('modalConfirmacion'), {
+        backdrop: 'static', 
+        keyboard: false 
+    });
     modal.show();
 }
 

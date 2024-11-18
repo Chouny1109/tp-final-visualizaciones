@@ -10,8 +10,45 @@ body{
 footer{
     margin-top: 20px;
     background-color: #29a16c;
-    height: 20vh;
+    color: white;
+    height: auto;
 }
+
+  .footer-left p {
+    margin: 0;
+    font-size: 16px;
+  }
+
+  .footer-buttons .btn {
+    font-size: 16px;
+    padding: 10px 20px;
+  }
+
+  .footer-buttons .btn-primary {
+    background-color: #007bff;
+    border-color: #007bff;
+  }
+
+  .footer-buttons .btn-primary:hover {
+    background-color: #0056b3;
+    border-color: #0056b3;
+  }
+
+  .footer-buttons .btn-secondary {
+    background-color: #6c757d;
+    border-color: #6c757d;
+  }
+
+  .footer-buttons .btn-secondary:hover {
+    background-color: #5a6268;
+    border-color: #5a6268;
+  }
+
+  .footer .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
 
 .calendar-table td {
     text-align: center;
@@ -347,7 +384,9 @@ height: auto;
     .calendar-header h4 {
         font-size: 14px; /* Ajustar el tamaño de la fuente de la cabecera */
     }
-    
+    .footer-unlam{
+        display: none;
+    }
 
     /* Mostrar el botón para ver el calendario */
     #toggleCalendar {

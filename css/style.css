@@ -362,11 +362,59 @@ height: auto;
     padding: 8px;  /* Reducir el padding */
     text-align: center;  /* Centrar el texto */
 }
+.drop{
+    display: none;
+}
+.unlam{
+    width: 8%;
+    border-radius: 100%;
+}
 
+.title{
+    color: white;
+}
 @media (max-width: 600px) {
     .ms-5{
-        margin-left: 0px !important;
+        margin-left: -9px !important;
     }
+    .profile{
+        display: none;
+    }
+    .unlam{
+        width: 12% !important;
+    }
+    .naveg{
+        display: none;
+    }
+    .drop{
+        display: block;
+    }
+    .title{
+        font-size: 1em;
+        margin-left: -8px;
+        
+    }
+    .cuenta{
+        font-size: 0.9em;
+        font-weight: 600;
+    }
+
+
+    .filtro{
+        font-size: 1em;
+    }
+    .form-select{
+        font-size: 0.9em;
+    }
+
+    .table-responsive{
+        font-size: 0.9em;
+    }
+
+    .historia{
+        padding: 18px;
+    }
+
     .calendar-container {
         display: block;
     }
@@ -423,7 +471,7 @@ height: auto;
     }
     .dropdown-menu {
         width: 100%;
-        left: 0 !important; /* Asegura que se alinee correctamente */
+       
     }
 
     /* Ajustamos el tamaño de los ítems del menú */
@@ -492,13 +540,40 @@ height: auto;
     max-width: 100% !important;
 }
 
+.modal-body{
+    padding: 0 !important;
 }
+
+.custom-tooltip{
+    display: flex;
+    margin-left: -130px !important;
+    width: 40% !important;
+   
+}
+
+.event-legend{
+    gap: 11px !important;
+    font-size: 13px;
+}
+
+.event-circle{
+    width: 12px !important;
+    height: 12px !important;
+}
+.ayuda{
+    padding: 20px !important;
+}
+footer{
+    font-size: 0.8em;
+}
+
+
 
 .mapa{
     width: 70%;
 }
 
-
+}
 /* Mostrar el calendario y ocultar trámites en pantallas mayores a 600px */
 @media (min-width: 601px) {
     .tramites-section {

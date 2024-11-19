@@ -3,14 +3,16 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Home</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="../css/style.css" rel="stylesheet">
 
     <style>
         .custom-tooltip {
     position: absolute;
-    background-color: #23ad38;
+    background-color: #302b2b;
     display: flex;
     color: #ffffff;
     padding: 5px 10px;
@@ -20,6 +22,18 @@
     pointer-events: none;
     z-index: 1000;
 }
+.event-legend {
+    display: flex;
+    gap: 15px;
+}
+
+.event-circle {
+    width: 15px;
+    height: 15px;
+    border-radius: 50%;
+    display: inline-block;
+}
+
 
 .today {
     background-color: #ffeb3b;
@@ -46,14 +60,103 @@
     background-color: #f9af5b !important;
     color: #fff;
 }
-.unlam{
-    width: 8%;
-    border-radius: 100%;
-}
+
 .title{
     font-size: 1.2em;
     color: #fff;
 }
+/* Estilos para la ventana modal */
+#ayudaModal .modal-content {
+    border-radius: 10px;
+    background-color: #f8f9fa;
+    padding: 20px;
+}
+
+#ayudaModal .modal-header {
+    background-color: #2d90fa;
+    color: white;
+    padding: 15px;
+    border-bottom: 2px solid #0056b3;
+}
+
+#ayudaModal .modal-title {
+    font-size: 1.25rem;
+    font-weight: bold;
+}
+
+#ayudaModal .btn-close {
+    background-color: transparent;
+    border: none;
+    font-size: 1.5rem;
+    color: white;
+}
+
+#ayudaModal .modal-body {
+    font-family: 'Arial', sans-serif;
+    font-size: 1rem;
+    line-height: 1.5;
+    color: #333;
+    padding: 15px;
+}
+
+/* Estilos para los párrafos */
+#ayudaModal .modal-body p {
+    margin-bottom: 15px;
+}
+
+#ayudaModal .modal-body p strong {
+    color: #007bff;
+}
+
+/* Estilos para el cuadro importante */
+.important {
+    background-color: #ffeeba;
+    padding: 15px;
+    border: 1px solid #ffc107;
+    border-radius: 5px;
+    margin-top: 20px;
+}
+
+.important h5 {
+    color: #e68a00;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.important p {
+    font-size: 0.95rem;
+    margin-bottom: 10px;
+}
+
+.important ul {
+    list-style-type: none;
+    padding-left: 0;
+}
+
+.important ul li {
+    font-size: 0.95rem;
+    margin-bottom: 5px;
+}
+
+.important a {
+    color: #288af3;
+    text-decoration: none;
+}
+
+.important a:hover {
+    text-decoration: underline;
+}
+
+/* Estilos para los enlaces */
+#ayudaModal a {
+    color: #007bff;
+    text-decoration: none;
+}
+
+#ayudaModal a:hover {
+    text-decoration: underline;
+}
+
     </style>
 </head>
 <body>
@@ -63,17 +166,32 @@
             <img src="https://www.universidades.com.ar/logos/original/logo-universidad-nacional-de-la-matanza.webp" alt="unlam" class="me-3 unlam">
             <h4 class="title mt-1">IntraConsulta</h4>
         </div>
-        <div class="d-flex align-items-center me-3 p-2">
-            <div class="text-end me-3">
+        <div class="d-flex align-items-center me-3 p-1">
+            <div class="text-end me-3 profile">
                 <p class="mb-0 text-white">RUGNA, JONATHAN NAHUEL</p>
-                <a href="../paginas/perfil.html" class="text-decoration-none text-white">Mi Perfil</a>
+                <a href="perfil.html" class="text-decoration-none text-white">Mi Perfil</a>
                 <span class="text-muted">|</span>
-                <a href="#" class="text-decoration-none ms-2 me-2 text-white">Ayuda</a>
+                <a href="#" class="text-decoration-none ms-2 me-2 text-white" id="ayudaLink">Ayuda</a>
                 <span class="text-muted">|</span>
-                <a href="../login.html" class="text-decoration-none ms-2 text-white">Cerrar Sesión</a>
+                <a href="../index.html" class="text-decoration-none ms-2 text-white">Cerrar Sesión</a>
             </div>
-            <img src="https://i.redd.it/szn7f3ln8jr31.jpg" alt="Perfil" class="rounded-circle" style="width: 53px; height: 53px;">
+            <img src="https://i.redd.it/szn7f3ln8jr31.jpg" alt="Perfil" class="rounded-circle naveg" style="width: 53px; height: 53px;">
         </div>
+
+        <div class="dropdown drop">
+            <a class="nav-link dropdown-toggle text-white me-2 cuenta" href="#" id="navbarDropdown" role="button"
+               data-bs-toggle="dropdown" aria-expanded="false" data-bs-display="static">
+               <i class="fa-solid fa-user me-0" style="color: #ffffff;"></i>
+                Mi cuenta
+            </a>
+            <ul class="dropdown-menu dropdown-menu-end drop-menu" aria-labelledby="navbarDropdown">
+                <li><a class="dropdown-item" href="perfil.html">Perfil</a></li>
+                <li><a href="#" class="dropdown-item" id="ayudaLink" data-bs-toggle="modal" data-bs-target="#ayudaModal">Ayuda</a></li>
+                <li><a class="dropdown-item" href="../index.html">Cerrar sesión</a></li>
+            </ul>
+        </div>
+        
+        
     </header>
     <nav class="navbar navbar-expand-lg navbar-custom mb-4">
         <div class="container-fluid content">
@@ -96,8 +214,7 @@
                         Inscripciones
                     </button>
                     <ul class="dropdown-menu dropdown-menu-custom menu">
-                        <li><a class="dropdown-item dropdown-item-custom" href="/paginas/inscripcion.html">Inscripción a Materias</a></li>
-                        <li><a class="dropdown-item dropdown-item-custom" href="/paginas/ofertaMaterias.html">Oferta de Materias</a></li>
+                        <li><a class="dropdown-item dropdown-item-custom" href="ofertaMaterias.html">Oferta de Materias</a></li>
                     </ul>
                 </div>
     
@@ -138,13 +255,13 @@
 </div>
 
 <div class="modal fade" id="ayudaModal" tabindex="-1" aria-labelledby="ayudaModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
+    <div class="modal-dialog modal-dialog-scrollable">
       <div class="modal-content">
         <div class="modal-header">
           <h5 class="modal-title" id="ayudaModalLabel">Información de Ayuda</h5>
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
-        <div class="modal-body">
+        <div class="modal-body ayuda">
           <p><strong>Estimados alumnos</strong></p>
           <p>
             Como saben, la seguridad de la información es un elemento clave y estratégico para una sana gestión universitaria. Con el fin de mejorarla, a partir del <strong>jueves 21 de diciembre</strong>, estaremos implementando una nueva medida de seguridad para el acceso a todos los productos de Microsoft 365: se habilitará la autenticación multifactorial (MFA).
@@ -171,7 +288,7 @@
             </ul>
           </div>
           
-          <h5>Office 365</h5>
+          <h5 class="mt-2">Office 365</h5>
           <p>
             Su mail de Office 365 lo encuentra en su apartado de Mi Perfil. 
             <a href="#" target="_blank">Pulse aquí para más información</a>.
@@ -180,18 +297,29 @@
             Usted debe tener actualizado su correo personal en datos personales, e indicar un correo personal de seguridad en el primer login en su cuenta Office 365 (<a href="#" target="_blank">leer instructivo</a>), ya que el mismo se utilizará en las gestiones del CAU (<a href="mailto:cau@unlam.edu.ar">cau@unlam.edu.ar</a>) y para una eventual recuperación de contraseña de Office 365.
           </p>
         </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
-        </div>
       </div>
     </div>
   </div>
 
 <div class="contenedorPadre col">
-    <!-- Calendario Académico -->
+    <!-- Calendario Académico --><!-- Indicadores de colores -->
+   
     <div class="calendar-section">
         <h5 class="text-left mb-0" style="padding-left: 75px;">Calendario Académico</h5>
-        <div class="calendar-container shadow" style="margin-top: 30px;">
+        <div class="event-legend d-flex align-items-center justify-content-start ms-4" style="padding-left: 75px; margin-top: 15px;">
+            <div class="event-circle ms-2 me-0" style="background-color: #ff5733;"></div>
+            <span class="me-3">Evento</span>
+
+            <div class="event-circle me-1" style="background-color: #28a745;"></div>
+            <span class="me-3">Actividad</span>
+
+            <div class="event-circle me-1" style="background-color: #ff7b00;"></div>
+            <span class="me-3">Examen</span>
+
+            <div class="event-circle me-1" style="background-color: #ffc107;"></div>
+            <span class="me-3">Feriado</span>
+        </div>
+        <div class="calendar-container shadow" style="margin-top: 7px;">
             <div class="calendar-header">
                 <button id="prevMonth" class="btn btn-outline-primary">&lt;</button>
                 <h4 id="monthYear"></h4>
@@ -273,6 +401,19 @@
         <div class="modal-content">
             <div class="modal-header">
                 <h5 class="modal-title" id="calendarioModalLabel">Calendario Académico</h5>
+            </div>
+            <div class="event-legend d-flex align-items-center justify-content-start" style="padding-left: 10px; margin-top: 15px;">
+                <div class="event-circle ms-2 me-0" style="background-color: #ff5733;"></div>
+                <span class="me-1">Evento</span>
+    
+                <div class="event-circle me-1" style="background-color: #28a745;"></div>
+                <span class="me-1">Actividad</span>
+    
+                <div class="event-circle me-1" style="background-color: #ff7b00;"></div>
+                <span class="me-1">Examen</span>
+    
+                <div class="event-circle me-1" style="background-color: #ffc107;"></div>
+                <span class="me-1">Feriado</span>
             </div>
             <div class="modal-body">
                 <!-- Calendar Section -->

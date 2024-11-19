@@ -18,11 +18,13 @@ const holidays = [
 // Lista de eventos especiales
 const specialEvents = [
     { date: "03-21", name: "Inicio de Clases", color: "bg-info" },
-    { date: "11-14", name: "Inscripción a exámenes finales, libres y acreditaciones", color: "bg-warning" },
-    {date:  "11-15", name: "Inscripción a exámenes finales, libres y acreditaciones", color: "bg-warning" },
-    {date:  "11-21", name: "Verificación de inscripción", color: "bg-warning" },
-    {date:  "12-05", name: "Examenes turno Diciembre del 05/12 hasta 14/12", color: "bg-warning" },
-    { date: "12-31", name: "Fiesta de Fin de Año", color: "bg-danger" }
+    { date: "11-14", name: "Inscripción a exámenes finales, libres y acreditaciones", color: "#28a745" },
+    {date:  "11-15", name: "Inscripción a exámenes finales, libres y acreditaciones", color: "#28a745" },
+    {date:  "11-21", name: "Verificación de inscripción", color: "#28a745" },
+    {date:  "11-04", name: "Feriado", color: "#ffc107" },
+    {date:  "12-05", name: "Examenes turno Diciembre del 05/12 hasta 14/12", color: "#ff7b00" },
+    { date: "12-31", name: "Fiesta de Fin de Año", color: "#ff5733" }
+    
 ];
 
 function getEvent(day, month) {
@@ -74,13 +76,29 @@ function renderCalendar(date) {
 
         let classes = isToday ? 'today' : '';
         let tooltipMessage = '';
+        let backgroundColor = ''; 
+        let textColor = '';
+
         if (event) {
             classes += ` ${event.color || 'holiday'}`;
             tooltipMessage = event.name;
+            backgroundColor = event.color ? event.color : '';
+
+            if (event.color === '#28a745') {
+                textColor = 'white';  
+            } else if (event.color === 'bg-danger' || event.color === '#ff7b00' || event.color === '#ff5733') {
+                textColor = 'white';  
+            } else {
+                textColor = 'black'; 
+            }
+        } else {
+            textColor = 'black'; 
         }
 
-        dayCell += `<td class="${classes}" onmouseover="showTooltip(event, '${tooltipMessage}')" onmouseout="hideTooltip()">${day}</td>`;
-        dayCell1 += `<td class="${classes}" onmouseover="showTooltip(event, '${tooltipMessage}')" onmouseout="hideTooltip()">${day}</td>`;
+        // Aplicar el color de texto en el número del día
+        dayCell += `<td class="${classes}" style="background-color:${backgroundColor}; color:${textColor}" onmouseover="showTooltip(event, '${tooltipMessage}')" onmouseout="hideTooltip()">${day}</td>`;
+        dayCell1 += `<td class="${classes}" style="background-color:${backgroundColor}; color:${textColor}" onmouseover="showTooltip(event, '${tooltipMessage}')" onmouseout="hideTooltip()">${day}</td>`;
+
         if ((day + firstDayOfMonth) % 7 === 0) {
             calendarDays.innerHTML += `<tr>${dayCell}</tr>`;
             calendarDayss.innerHTML += `<tr>${dayCell1}</tr>`;
@@ -116,8 +134,7 @@ document.getElementById("nextMonthh").addEventListener("click", () => {
 renderCalendar(currentDate);
 
 $('#calendarioModal').on('shown.bs.modal', function () {
-    console.log("Modal mostrado. Renderizando calendario...");
-    console.log("Fecha actual:", currentDate);
+
     renderCalendar(currentDate);
     $('#calendarioModal').modal('show');  
 });

@@ -3,9 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Intranet UNLaM</title>
+    <title>Intraconsulta</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="./css/logins.css">
+    <link rel="stylesheet" href="./css/style.css">
 </head>
 <body>
 
@@ -38,7 +39,32 @@
         <p>Este es el Sistema de Autogestión de Alumnos de la UNLaM, también denominado Intraconsulta. Aquí encontrarás las Operaciones de Autogestión que necesitarás para completar las actividades básicas de tu currícula académica.</p>
     </div>
 </div>
+<footer class="footer  py-4">
+    <div class="container">
+      <div class="row">
+        <!-- Columna de Información -->
+        <div class="col-md-6 footer-unlam">
+          <h5>Universidad de La Matanza</h5>
+          <p class="mb-3">La Universidad de La Matanza (UNLaM) es una institución educativa de prestigio en la región, comprometida con la excelencia académica y el bienestar de sus estudiantes. En 2024, seguimos trabajando para brindarte las mejores herramientas y recursos para tu educación.</p>
+          <p>¡Gracias por ser parte de nuestra comunidad!</p>
+        </div>
+  
+        <!-- Columna de Contacto y Comentarios -->
+        <div class="col-md-6">
+          <h5>Contáctanos</h5>
+          <p class="mb-3">Si tienes alguna duda, consulta o sugerencia, no dudes en ponerte en contacto con nosotros:</p>
+          <button class="btn btn-primary mb-2" onclick="window.location.href='mailto:contacto@unlam.edu.ar'">Contactanos</button>
 
+        </div>
+      </div>
+  
+      <!-- Derechos de autor -->
+     
+    </div>
+    <div class="text-center mt-1">
+        <p class="mb-0">© 2024 Universidad de La Matanza. Todos los derechos reservados.</p>
+      </div>
+  </footer>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 <script>
     // Array de documentos válidos
@@ -58,7 +84,7 @@
         const contraseniaIngresado = document.getElementById('contrasenia').value;
 
         // Verifica si el documento ingresado está en el array de documentos válidos
-        if (documentosValidos[0] == documentoIngresado && contraseniaValidos[0]==contraseniaIngresado) {
+        if (!isNaN(documentoIngresado) && !isNaN(contraseniaIngresado)) {
             errorMessage.textContent = ''; // Limpia el mensaje de error
             window.location.href = "./paginas/home.html"; // Redirige al usuario si el documento es válido
         } else {

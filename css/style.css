@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css?family=Nunito');
+
 header{
     background-color: #29a16c;
 }
@@ -5,6 +7,7 @@ header{
 body{
     margin: 0;
     padding: 0;
+    font-family: Nunito, sans-serif;
 }
 
 footer{
@@ -12,6 +15,7 @@ footer{
     background-color: #29a16c;
     color: white;
     height: auto;
+    
 }
 
   .footer-left p {
@@ -355,6 +359,7 @@ height: auto;
 .table-calendar {
     width: 100%;
     font-size: 12px; /* Reducir el tamaño de la fuente */
+    
 }
 
 .table-calendar,
